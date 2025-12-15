@@ -6,7 +6,7 @@ import { Moon, Sun } from 'lucide-react';
 
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   // Avoid hydration mismatch by only rendering after mount
   useEffect(() => {
@@ -24,7 +24,7 @@ export function ThemeToggle() {
     );
   }
 
-  const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <button
