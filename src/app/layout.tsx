@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Link from "next/link";
 import { Camera } from "lucide-react";
+import { ThemeProvider, ThemeToggle } from "@/components/ui";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,10 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} antialiased`}
       >
+        <ThemeProvider>
         {/* Navigation Header */}
         <header className="border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm sticky top-0 z-40">
           <div className="container mx-auto px-4 py-4">
@@ -44,12 +46,13 @@ export default function RootLayout({
                 <Link href="/admin" className="btn-primary">
                   Admin
                 </Link>
+                <ThemeToggle />
               </nav>
             </div>
           </div>
         </header>
-        {children}
-        {/* REPLACE THIS COMMENT */}
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
