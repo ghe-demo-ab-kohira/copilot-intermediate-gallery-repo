@@ -9,6 +9,11 @@
   --font-sans: var(--font-geist-sans);
 }
 
+:root.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -25,6 +30,10 @@ body {
 .page-gradient {
   min-height: 100vh;
   background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+}
+
+:root.dark .page-gradient {
+  background: linear-gradient(to bottom right, #0f172a, #1e293b);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,6 +53,10 @@ body {
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
+:root.dark .card-base {
+  background-color: #1e293b;
+}
+
 @media (prefers-color-scheme: dark) {
   .card-base {
     background-color: #1e293b;
@@ -61,6 +74,10 @@ body {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
+:root.dark .card-elevated {
+  background-color: #1e293b;
+}
+
 @media (prefers-color-scheme: dark) {
   .card-elevated {
     background-color: #1e293b;
@@ -74,6 +91,10 @@ body {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+:root.dark .card-feature {
+  background-color: #1e293b;
+}
+
 @media (prefers-color-scheme: dark) {
   .card-feature {
     background-color: #1e293b;
@@ -85,6 +106,10 @@ body {
   padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+:root.dark .card-stats {
+  background-color: #1e293b;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -122,6 +147,15 @@ body {
 
 .btn-secondary:hover {
   background-color: #f9fafb;
+}
+
+:root.dark .btn-secondary {
+  border-color: #4b5563;
+  color: #d1d5db;
+}
+
+:root.dark .btn-secondary:hover {
+  background-color: #374151;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -168,6 +202,14 @@ body {
   color: #111827;
 }
 
+:root.dark .nav-link {
+  color: #d1d5db;
+}
+
+:root.dark .nav-link:hover {
+  color: #ffffff;
+}
+
 @media (prefers-color-scheme: dark) {
   .nav-link {
     color: #d1d5db;
@@ -211,6 +253,17 @@ body {
   border-color: transparent;
 }
 
+:root.dark .form-input,
+:root.dark .form-select {
+  border-color: #4b5563;
+  background-color: #374151;
+  color: #ffffff;
+}
+
+:root.dark .form-input::placeholder {
+  color: #9ca3af;
+}
+
 @media (prefers-color-scheme: dark) {
   .form-input,
   .form-select {
@@ -247,6 +300,21 @@ body {
 .status-draft {
   background-color: #fed7aa;
   color: #9a3412;
+}
+
+:root.dark .status-active {
+  background-color: #14532d;
+  color: #bbf7d0;
+}
+
+:root.dark .status-private {
+  background-color: #581c87;
+  color: #e9d5ff;
+}
+
+:root.dark .status-draft {
+  background-color: #9a3412;
+  color: #fed7aa;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -314,6 +382,11 @@ body {
   background-color: #fed7aa;
 }
 
+:root.dark .icon-container-blue { background-color: #1e3a8a; }
+:root.dark .icon-container-green { background-color: #14532d; }
+:root.dark .icon-container-purple { background-color: #581c87; }
+:root.dark .icon-container-orange { background-color: #9a3412; }
+
 @media (prefers-color-scheme: dark) {
   .icon-container-blue { background-color: #1e3a8a; }
   .icon-container-green { background-color: #14532d; }
@@ -342,6 +415,10 @@ body {
   background-color: #f9fafb;
 }
 
+:root.dark .hover-bg:hover {
+  background-color: rgba(55, 65, 81, 0.5);
+}
+
 @media (prefers-color-scheme: dark) {
   .hover-bg:hover {
     background-color: rgba(55, 65, 81, 0.5);
@@ -361,6 +438,10 @@ body {
   height: 0.5rem;
   border-radius: 9999px;
   transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root.dark .progress-bar {
+  background-color: #374151;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -388,6 +469,18 @@ body {
   border-color: #60a5fa;
 }
 
+:root.dark .drop-zone {
+  border-color: #4b5563;
+}
+
+:root.dark .drop-zone-active {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+:root.dark .drop-zone-inactive:hover {
+  border-color: #3b82f6;
+}
+
 @media (prefers-color-scheme: dark) {
   .drop-zone {
     border-color: #4b5563;
@@ -410,6 +503,14 @@ body {
 
 .table-row:hover {
   background-color: #f9fafb;
+}
+
+:root.dark .table-row {
+  border-color: #374151;
+}
+
+:root.dark .table-row:hover {
+  background-color: rgba(55, 65, 81, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -449,6 +550,10 @@ body {
 
 .gallery-card:hover {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+:root.dark .gallery-card {
+  background-color: #1e293b;
 }
 
 @media (prefers-color-scheme: dark) {
