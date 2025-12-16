@@ -6,7 +6,7 @@ import { Sun, Moon, Monitor } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function ThemeToggle() {
-  const { theme, setTheme, systemTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -20,8 +20,6 @@ export function ThemeToggle() {
       <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 animate-pulse" />
     );
   }
-
-  const currentTheme = theme === "system" ? systemTheme : theme;
 
   const themes = [
     { value: "light", label: "Light", icon: Sun },
