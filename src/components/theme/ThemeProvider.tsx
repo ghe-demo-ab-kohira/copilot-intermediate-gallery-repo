@@ -2,19 +2,19 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark' | 'system';
+type Theme = '明るい' | '暗い' | 'system';
 
 interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
-  resolvedTheme: 'light' | 'dark';
+  resolvedTheme: '明るい' | '暗い';
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('system');
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [resolvedTheme, setResolvedTheme] = useState<'明るい' | '暗い'>('明るい');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Load theme from localStorage on mount
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme') as Theme | null;
-      if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
+      if (savedTheme && ['明るい', '暗い', 'system'].includes(savedTheme)) {
         setThemeState(savedTheme);
       }
     }
@@ -36,27 +36,31 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Remove both classes first
     root.classList.remove('light', 'dark');
     
-    let effectiveTheme: 'light' | 'dark';
+    let effectiveTheme: '明るい' | '暗い';
     
     if (theme === 'system') {
       // Use system preference
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? '暗い' : '明るい';
       effectiveTheme = systemTheme;
     } else {
       effectiveTheme = theme;
     }
     
+    // Map Japanese theme to CSS class
+    const cssClass: 'light' | 'dark' = effectiveTheme === '明るい' ? 'light' : 'dark';
+    
     // Add the appropriate class
-    root.classList.add(effectiveTheme);
+    root.classList.add(cssClass);
     setResolvedTheme(effectiveTheme);
     
     // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => {
       if (theme === 'system') {
-        const newSystemTheme = mediaQuery.matches ? 'dark' : 'light';
+        const newSystemTheme = mediaQuery.matches ? '暗い' : '明るい';
+        const newCssClass = mediaQuery.matches ? 'dark' : 'light';
         root.classList.remove('light', 'dark');
-        root.classList.add(newSystemTheme);
+        root.classList.add(newCssClass);
         setResolvedTheme(newSystemTheme);
       }
     };
