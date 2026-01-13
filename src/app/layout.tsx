@@ -22,6 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // suppressHydrationWarning prevents hydration mismatch warnings from next-themes
+    // which updates the class attribute on <html> during client-side hydration
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} antialiased`}
