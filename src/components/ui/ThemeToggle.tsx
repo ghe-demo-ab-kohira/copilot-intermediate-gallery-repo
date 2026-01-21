@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -27,16 +27,19 @@ export function ThemeToggle() {
   }
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    // Toggle between light and dark (ignore system for now to keep it simple)
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
+
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <button
       onClick={toggleTheme}
       className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
-      {theme === 'dark' ? (
+      {isDark ? (
         <Sun className="h-5 w-5" />
       ) : (
         <Moon className="h-5 w-5" />
